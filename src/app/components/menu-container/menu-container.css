@@ -1,0 +1,32 @@
+.menu-main-content {
+  padding: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fcfcfc;
+}
+
+.category-group {
+  margin-bottom: 32px;
+}
+
+.category-header {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+}
+
+.category-name {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #888;
+  text-align: right;
+  text-transform: capitalize;
+  font-style: italic;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

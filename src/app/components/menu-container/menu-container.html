@@ -1,0 +1,15 @@
+<div class="menu-main-content">
+  @for (category of categories; track category) {
+    <section class="category-group">
+      <div class="category-header">
+        <h2 class="category-name">{{ category | titlecase }}</h2>
+      </div>
+      
+      <div class="cards-list">
+        @for (item of productsByCategory[category]; track item.id) {
+          <app-product-card [product]="item"></app-product-card>
+        }
+      </div>
+    </section>
+  }
+</div>

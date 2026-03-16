@@ -1,0 +1,108 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "pizzas",
+      "name": "Pizza Muzzarella",
+      "price": 6500,
+      "image": "products/Pizza-Muzzarella.jpg",
+      "description": "Pizza clásica con salsa de tomate y abundante muzzarella."
+    },
+    {
+      "id": 2,
+      "category": "pizzas",
+      "name": "Pizza Napolitana",
+      "price": 7200,
+      "image": "products/Pizza-Napolitana.jpg",
+      "description": "Pizza con rodajas de tomate fresco, ajo y muzzarella."
+    },
+    {
+      "id": 3,
+      "category": "pizzas",
+      "name": "Pizza Especial",
+      "price": 7900,
+      "image": "products/Pizza-Especial.jpg",
+      "description": "Pizza con jamón, morrón y muzzarella."
+    },
+    {
+      "id": 4,
+      "category": "pizzas",
+      "name": "Pizza Cuatro Quesos",
+      "price": 8300,
+      "image": "products/Pizza-Cuatro-Quesos.jpg",
+      "description": "Combinación de muzzarella, roquefort, parmesano y provolone."
+    },
+    {
+      "id": 5,
+      "category": "pizzas",
+      "name": "Pizza Pepperoni",
+      "price": 8500,
+      "image": "products/pizza-pepperoni.jpg",
+      "description": "Pizza con pepperoni y muzzarella."
+    },
+    {
+      "id": 6,
+      "category": "empanadas",
+      "name": "Empanada de Carne al Cuchillo",
+      "price": 1200,
+      "image": "products/empanada-carne-cuchillo.jpg",
+      "description": "Empanada tradicional con carne cortada a cuchillo."
+    },
+    {
+      "id": 7,
+      "category": "empanadas",
+      "name": "Empanada de Cebolla y Queso",
+      "price": 1100,
+      "image": "products/empanada-cebolla-queso.jpg",
+      "description": "Empanada rellena de cebolla caramelizada y queso."
+    },
+    {
+      "id": 8,
+      "category": "empanadas",
+      "name": "Empanada de Humita",
+      "price": 1100,
+      "image": "products/empanada-humita.png",
+      "description": "Empanada cremosa de choclo y salsa blanca."
+    },
+    {
+      "id": 9,
+      "category": "tartas",
+      "name": "Tarta de Jamón y Queso",
+      "price": 5200,
+      "image": "products/tarta-jamon-queso.jpg",
+      "description": "Tarta casera con jamón cocido y queso."
+    },
+    {
+      "id": 10,
+      "category": "tartas",
+      "name": "Tarta de Verdura",
+      "price": 4900,
+      "image": "products/tarta-verdura.png",
+      "description": "Tarta de acelga con salsa blanca."
+    },
+    {
+      "id": 11,
+      "category": "bebidas",
+      "name": "Coca Cola 1.5L",
+      "price": 2800,
+      "image": "products/coca-cola.jpg",
+      "description": "Gaseosa Coca Cola 1.5 litros."
+    },
+    {
+      "id": 12,
+      "category": "bebidas",
+      "name": "Sprite 1.5L",
+      "price": 2700,
+      "image": "products/sprite.png",
+      "description": "Gaseosa sabor lima limón."
+    },
+    {
+      "id": 13,
+      "category": "bebidas",
+      "name": "Fanta Naranja 1.5L",
+      "price": 2700,
+      "image": "products/fanta-naranja.png",
+      "description": "Gaseosa sabor naranja."
+    }
+  ]
+}
