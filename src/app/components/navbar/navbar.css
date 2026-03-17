@@ -1,0 +1,100 @@
+.main-navbar {
+  position: sticky;
+  top: 0;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* Columnas laterales de ancho fijo para centrar el bloque del medio */
+.nav-side {
+  flex: 0 0 50px; 
+  display: flex;
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* Contenedor central */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nav-scroll-wrapper {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  padding: 5px 0;
+}
+
+.nav-scroll-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Estilos de links */
+.nav-link {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  color: #777;
+  padding: 8px 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.active {
+  color: #4a8d9b;
+  border-bottom-color: #4a8d9b;
+  font-weight: 600;
+}
+
+/* Estilos del carrito */
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.cart-button:active {
+  transform: scale(0.9);
+}
+
+.cart-icon {
+  stroke: #4a8d9b; /* El celeste de tu marca */
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}

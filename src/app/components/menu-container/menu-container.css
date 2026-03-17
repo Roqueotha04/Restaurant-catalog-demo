@@ -1,32 +1,41 @@
-.menu-main-content {
-  padding: 16px;
-  max-width: 900px;
-  margin: 0 auto;
+.menu-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   background-color: #fcfcfc;
+  min-height: 100vh;
 }
 
-.category-group {
-  margin-bottom: 32px;
+.menu-content {
+  width: 100%;
+  max-width: 600px; /* Ancho similar al de una app móvil/web de menú */
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.category-block {
+  padding-top: 40px;
+  margin-bottom: 20px;
 }
 
 .category-header {
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 16px;
-  padding-bottom: 4px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
 }
 
-.category-name {
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #888;
+.category-title {
   text-align: right;
-  text-transform: capitalize;
+  font-family: 'Georgia', serif;
   font-style: italic;
+  font-weight: 400;
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
-.cards-list {
+.products-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }

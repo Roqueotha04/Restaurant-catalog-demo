@@ -1,73 +1,108 @@
-
-.card {
+.card-container {
   display: flex;
-  background-color: #ffffff;
-  border: 1px solid #eeeeee;
-  border-radius: 12px; 
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f2f2f2;
+  height: 180px; /* Card más alta y espaciosa */
   overflow: hidden;
-  padding: 20px; 
-  gap: 20px; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s ease;
-  align-items: center; 
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
 }
 
-.card:hover {
-  border-color: #d1d1d1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.card-container:hover {
+  border-color: #4a8d9b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
-.image-container {
-  flex-shrink: 0;
+/* Sección de Imagen */
+.image-section {
+  flex: 0 0 160px; /* Imagen más ancha */
+  padding: 12px;
 }
 
-.image-container img {
-  width: 120px; 
-  height: 120px;
+.image-section img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  display: block;
+  border-radius: 12px;
 }
 
-.content {
+/* Sección de Información */
+.info-section {
+  flex: 1;
+  padding: 20px 20px 15px 5px; /* Espaciado generoso */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
-  min-height: 100px; 
 }
 
-.name {
-  margin: 0;
-  font-size: 1.25rem; 
-  font-weight: 700;
-  color: #222;
-  line-height: 1.2;
+.product-name {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 
-/* Descripción */
-.description {
-  margin: 8px 0;
-  font-size: 0.95rem;
-  color: #777;
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 3; /* Más espacio para descripción larga */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.price-row {
-  margin-top: auto;
+/* Fila inferior: Precio y Botón */
+.price-action-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
-.price {
-  font-size: 1.4rem; 
-  font-weight: 600;
-  color: #4a8d9b; 
-  letter-spacing: -0.5px;
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4a8d9b;
+}
+
+/* Botón chico pero con buen área de click */
+.add-btn-small {
+  width: 42px;
+  height: 42px;
+  background-color: #4a8d9b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(74, 141, 155, 0.2);
+}
+
+.add-btn-small:hover {
+  background-color: #3a6f7a;
+  transform: scale(1.05);
+}
+
+.add-btn-small:active {
+  transform: scale(0.95);
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 600px) {
+  .card-container {
+    height: 160px;
+  }
+  .image-section {
+    flex: 0 0 130px;
+  }
+  .product-name {
+    font-size: 1.1rem;
+  }
 }

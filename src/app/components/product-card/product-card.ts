@@ -10,6 +10,5 @@ import { Product } from '../../models/product';
   styleUrl: './product-card.css',
 })
 export class ProductCard {
-  // Esta es la línea que soluciona tu error:
   @Input({ required: true }) product!: Product;
 }

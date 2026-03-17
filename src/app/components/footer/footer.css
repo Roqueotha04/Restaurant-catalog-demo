@@ -1,0 +1,54 @@
+.footer {
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #eeeeee;
+  padding: 40px 20px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.brand {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.brand-divider {
+  color: #ddd;
+}
+
+.brand-year {
+  color: #999;
+}
+
+.credits {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #888;
+  font-family: 'Inter', sans-serif;
+}
+
+.author {
+  color: #4a8d9b; /* El celeste que venimos usando */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Para que se vea bien en celulares */
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+  }
+}

@@ -1,15 +1,33 @@
-<div class="menu-main-content">
-  @for (category of categories; track category) {
-    <section class="category-group">
-      <div class="category-header">
-        <h2 class="category-name">{{ category | titlecase }}</h2>
-      </div>
-      
-      <div class="cards-list">
-        @for (item of productsByCategory[category]; track item.id) {
-          <app-product-card [product]="item"></app-product-card>
-        }
-      </div>
-    </section>
-  }
-</div>
+<app-navbar 
+  [categories]="categories" 
+  [activeCategory]="activeCategoryFromScroll">
+</app-navbar>
+
+<main class="menu-wrapper">
+  <div class="menu-content">
+    @for (category of categories; track category) {
+      <section [id]="category" #categorySection class="category-block">
+        <header class="category-header">
+          <h2 class="category-title">{{ category | titlecase }}</h2>
+        </header>
+        
+        <div class="products-grid">
+          @for (product of productsByCategory[category]; track product.id) {
+            <app-product-card 
+              [product]="product"
+              (click)="openModal(product)">
+            </app-product-card>
+          }
+        </div>
+      </section>
+    }
+  </div>
+</main>
+
+@if (selectedProduct()) {
+  <app-product-modal 
+    [product]="selectedProduct()!"
+    (close)="closeModal()"
+    (confirm)="onAddToCart($event)">
+  </app-product-modal>
+}
