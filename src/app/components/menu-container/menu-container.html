@@ -1,33 +1,33 @@
 <app-navbar 
   [categories]="categories" 
-  [activeCategory]="activeCategoryFromScroll">
+  [activeCategory]="activeCategoryFromScroll"
+  (openCart)="isCartOpen.set(true)">
 </app-navbar>
 
-<main class="menu-wrapper">
-  <div class="menu-content">
-    @for (category of categories; track category) {
-      <section [id]="category" #categorySection class="category-block">
-        <header class="category-header">
-          <h2 class="category-title">{{ category | titlecase }}</h2>
-        </header>
-        
-        <div class="products-grid">
-          @for (product of productsByCategory[category]; track product.id) {
-            <app-product-card 
-              [product]="product"
-              (click)="openModal(product)">
-            </app-product-card>
-          }
-        </div>
-      </section>
-    }
-  </div>
+<main class="menu-content">
+  @for (category of categories; track category) {
+    <section [id]="category" #categorySection class="category-block">
+      <h2 class="category-title">{{ category | titlecase }}</h2>
+      <div class="products-grid">
+        @for (product of productsByCategory[category]; track product.id) {
+          <app-product-card 
+            [product]="product" 
+            (click)="selectedProduct.set(product)">
+          </app-product-card>
+        }
+      </div>
+    </section>
+  }
 </main>
 
 @if (selectedProduct()) {
   <app-product-modal 
-    [product]="selectedProduct()!"
-    (close)="closeModal()"
+    [product]="selectedProduct()!" 
+    (close)="selectedProduct.set(null)" 
     (confirm)="onAddToCart($event)">
   </app-product-modal>
+}
+
+@if (isCartOpen()) {
+  <app-cart (close)="isCartOpen.set(false)"></app-cart>
 }

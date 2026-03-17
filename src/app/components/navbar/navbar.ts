@@ -1,47 +1,37 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TitleCasePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar implements OnChanges {
+export class Navbar {
+  private cartService = inject(CartService);
+  
   @Input({ required: true }) categories: string[] = [];
   @Input() activeCategory: string = '';
-  @Input() cartCount: number = 0; // Contador de items en el carrito
+  
+  @Output() openCart = new EventEmitter<void>();
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['activeCategory'] && this.activeCategory) {
-      this.centerActiveTab();
-    }
+  cartCount = this.cartService.totalItems;
+
+  handleCartClick() {
+    this.openCart.emit();
   }
 
   scrollToCategory(category: string) {
     const element = document.getElementById(category);
     if (element) {
-      const headerOffset = 110; 
+      const headerOffset = 110;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition + window.pageYOffset - headerOffset,
         behavior: 'smooth'
       });
-    }
-  }
-
-  toggleCart() {
-    console.log('Abriendo el carrito...');
-    // Aquí luego llamaremos a una función para abrir el modal o sidebar
-  }
-
-  private centerActiveTab() {
-    const activeBtn = document.querySelector('.nav-link.active');
-    if (activeBtn) {
-      activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   }
 }

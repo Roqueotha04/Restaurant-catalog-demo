@@ -1,7 +1,4 @@
-import { 
-  Component, OnInit, inject, AfterViewInit, ViewChildren, 
-  QueryList, ElementRef, ChangeDetectorRef, signal 
-} from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectorRef, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.service';
 import { CartService } from '../../services/cart.service';
@@ -9,13 +6,14 @@ import { Product } from '../../models/product';
 import { ProductCard } from '../product-card/product-card';
 import { Navbar } from '../navbar/navbar';
 import { ProductModalComponent } from '../product-modal.component/product-modal.component';
+import { Cart } from '../cart/cart';
 
 @Component({
   selector: 'app-menu-container',
   standalone: true,
-  imports: [CommonModule, ProductCard, Navbar, ProductModalComponent],
+  imports: [CommonModule, ProductCard, Navbar, ProductModalComponent, Cart],
   templateUrl: './menu-container.html',
-  styleUrl: './menu-container.css',
+  styleUrl: './menu-container.css'
 })
 export class MenuContainer implements OnInit, AfterViewInit {
   private readonly menuService = inject(MenuService);
@@ -26,34 +24,43 @@ export class MenuContainer implements OnInit, AfterViewInit {
   
   productsByCategory: { [key: string]: Product[] } = {};
   categories: string[] = [];
-  activeCategoryFromScroll: string = '';
-
+  activeCategoryFromScroll = '';
+  
   selectedProduct = signal<Product | null>(null);
+  isCartOpen = signal(false);
 
   ngOnInit(): void {
     this.menuService.getProducts().subscribe({
       next: (data) => {
-        this.groupProducts(data);
-        if (this.categories.length > 0) {
-          setTimeout(() => {
-            this.activeCategoryFromScroll = this.categories[0];
-            this.cdr.detectChanges();
-          }, 0);
+        if (data && data.length > 0) {
+          this.groupProducts(data);
         }
-      },
-      error: (err) => console.error(err)
+      }
     });
   }
 
   ngAfterViewInit(): void {
-    this.initIntersectionObserver();
+    this.sectionElements.changes.subscribe(() => {
+      this.initIntersectionObserver();
+    });
+  }
+
+  private groupProducts(products: Product[]): void {
+    this.categories = [...new Set(products.map(p => p.category))];
+    const grouped: { [key: string]: Product[] } = {};
+    this.categories.forEach(cat => {
+      grouped[cat] = products.filter(p => p.category === cat);
+    });
+    this.productsByCategory = grouped;
+    this.activeCategoryFromScroll = this.categories[0];
+    this.cdr.detectChanges();
   }
 
   private initIntersectionObserver(): void {
     const options = {
       root: null,
-      rootMargin: '-120px 0px -70% 0px',
-      threshold: 0
+      rootMargin: '-150px 0px -60% 0px',
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -65,33 +72,14 @@ export class MenuContainer implements OnInit, AfterViewInit {
       });
     }, options);
 
-    this.sectionElements.changes.subscribe((sections: QueryList<ElementRef>) => {
-      sections.forEach(section => observer.observe(section.nativeElement));
-    });
-  }
-
-  private groupProducts(products: Product[]): void {
-    this.categories = [...new Set(products.map(p => p.category))];
-    this.categories.forEach(cat => {
-      this.productsByCategory[cat] = products.filter(p => p.category === cat);
-    });
-  }
-
-  // Métodos para el modal
-  openModal(product: Product) {
-    this.selectedProduct.set(product);
-  }
-
-  closeModal() {
-    this.selectedProduct.set(null);
+    this.sectionElements.forEach(section => observer.observe(section.nativeElement));
   }
 
   onAddToCart(event: { quantity: number, note: string }) {
     const product = this.selectedProduct();
     if (product) {
       this.cartService.addToCart(product, event.quantity, event.note);
-      console.log(`Agregado: ${product.name}, Cantidad: ${event.quantity}, Nota: ${event.note}`);
     }
-    this.closeModal();
+    this.selectedProduct.set(null);
   }
 }

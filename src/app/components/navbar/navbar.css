@@ -11,7 +11,6 @@
   padding: 0 15px;
 }
 
-/* Columnas laterales de ancho fijo para centrar el bloque del medio */
 .nav-side {
   flex: 0 0 50px; 
   display: flex;
@@ -22,7 +21,6 @@
   justify-content: flex-end;
 }
 
-/* Contenedor central */
 .nav-center {
   flex: 1;
   display: flex;
@@ -34,15 +32,14 @@
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
   padding: 5px 0;
 }
 
 .nav-scroll-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none; 
 }
 
-/* Estilos de links */
 .nav-link {
   background: none;
   border: none;
@@ -61,7 +58,6 @@
   font-weight: 600;
 }
 
-/* Estilos del carrito */
 .cart-button {
   position: relative;
   background: none;
@@ -79,7 +75,7 @@
 }
 
 .cart-icon {
-  stroke: #4a8d9b; /* El celeste de tu marca */
+  stroke: #4a8d9b; 
 }
 
 .cart-badge {
@@ -97,4 +93,47 @@
   align-items: center;
   justify-content: center;
   border: 2px solid white;
+}
+
+@media (max-width: 768px) {
+  .main-navbar {
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  .nav-side {
+    flex: 0 0 40px;
+  }
+
+  .nav-scroll-wrapper {
+    gap: 15px;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 6px 0;
+  }
+
+  .cart-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-side {
+    flex: 0 0 35px;
+  }
+
+  .nav-center {
+    padding: 0 5px;
+  }
+
+  .nav-scroll-wrapper {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
 }

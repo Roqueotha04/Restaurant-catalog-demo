@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../models/product';
@@ -15,28 +15,25 @@ export class ProductModalComponent {
   @Output() close = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<{ quantity: number, note: string }>();
 
-  quantity = signal(1);
-  note: string = '';
+  quantity = 1;
+  note = '';
 
   increment() {
-    this.quantity.update(v => v + 1);
+    this.quantity++;
   }
 
   decrement() {
-    if (this.quantity() > 1) {
-      this.quantity.update(v => v - 1);
-    }
+    if (this.quantity > 1) this.quantity--;
   }
 
-  closeModal() {
+  onClose() {
     this.close.emit();
   }
 
-  handleConfirm() {
+  onConfirm() {
     this.confirm.emit({
-      quantity: this.quantity(),
+      quantity: this.quantity,
       note: this.note
     });
-    this.closeModal();
   }
 }

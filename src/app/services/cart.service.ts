@@ -37,11 +37,11 @@ export class CartService {
     });
   }
 
-  removeItem(productId: number, note?: string): void {
-    this.cartItems.update(items => 
-      items.filter(item => !(item.id === productId && item.note === note))
-    );
-  }
+ removeItem(productId: number, note?: string) {
+  this.cartItems.update(items => 
+    items.filter(item => !(item.id === productId && item.note === note))
+  );
+}
 
   clearCart(): void {
     this.cartItems.set([]);

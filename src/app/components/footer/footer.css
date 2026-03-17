@@ -41,12 +41,12 @@
 }
 
 .author {
-  color: #4a8d9b; /* El celeste que venimos usando */
+  color: #4a8d9b; 
   font-weight: 600;
   text-decoration: none;
 }
 
-/* Para que se vea bien en celulares */
+
 @media (max-width: 480px) {
   .footer {
     padding: 30px 15px;
